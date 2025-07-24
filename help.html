@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Maplet Help & User Guide - Learn how to use Maplet's features." />
+  <title>Maplet Help & User Guide</title>
+  <link rel="icon" type="image/png" href="MapletLogoSmallwhite.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f8fafc;
+      color: #1f2937;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1rem 2rem 1rem;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 16px;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      display: flex;
+      gap: 2rem;
+    }
+    .sidebar {
+      min-width: 220px;
+      max-width: 260px;
+      position: sticky;
+      top: 2rem;
+      align-self: flex-start;
+      background: rgba(243,244,246,0.7);
+      border-radius: 12px;
+      padding: 1.5rem 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      height: fit-content;
+    }
+    .sidebar h2 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: #3b82f6;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar li {
+      margin-bottom: 0.7rem;
+    }
+    .sidebar a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+      font-size: 1rem;
+    }
+    .sidebar a:hover {
+      color: #0ea5e9;
+      text-decoration: underline;
+    }
+    .main-content {
+      flex: 1;
+      min-width: 0;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 2px solid #e5e7eb;
+    }
+    .header h1 {
+      font-family: "Didot", "Times New Roman", serif;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, #0ea5e9, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .header p {
+      color: #6b7280;
+      font-size: 1.1rem;
+    }
+    h2, h3, h4 {
+      color: #0ea5e9;
+      margin-top: 2.2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    h2 {
+      font-size: 1.5rem;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 0.3rem;
+    }
+    h3 {
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+    }
+    h4 {
+      font-size: 1.05rem;
+      margin-top: 1.2rem;
+    }
+    p, li {
+      color: #374151;
+      font-size: 1.05rem;
+    }
+    ul, ol {
+      margin-bottom: 1.2rem;
+      padding-left: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.4rem;
+    }
+    code, pre {
+      background: #f3f4f6;
+      color: #0ea5e9;
+      border-radius: 4px;
+      padding: 0.2em 0.4em;
+      font-size: 0.98em;
+    }
+    .tip {
+      background: rgba(16,185,129,0.08);
+      border-left: 4px solid #10b981;
+      padding: 1em;
+      margin: 1.5em 0;
+      border-radius: 0 8px 8px 0;
+      color: #065f46;
+    }
+    .faq {
+      background: rgba(59,130,246,0.07);
+      border-left: 4px solid #3b82f6;
+      padding: 1em;
+      margin: 1.5em 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 2rem;
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .back-link:hover {
+      color: #1d4ed8;
+    }
+    .back-link i {
+      margin-right: 0.5rem;
+    }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #0f172a;
+        color: #e5e7eb;
+      }
+      .container {
+        background: rgba(30,41,59,0.92);
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+      .sidebar {
+        background: rgba(30,41,59,0.7);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      }
+      .sidebar h2 {
+        color: #60a5fa;
+      }
+      .sidebar a {
+        color: #60a5fa;
+      }
+      .sidebar a:hover {
+        color: #38bdf8;
+      }
+      .header h1 {
+        color: #60a5fa;
+      }
+      h2, h3, h4 {
+        color: #60a5fa;
+      }
+      p, li {
+        color: #cbd5e1;
+      }
+      code, pre {
+        background: #1e293b;
+        color: #38bdf8;
+      }
+      .tip {
+        background: rgba(16,185,129,0.13);
+        color: #6ee7b7;
+        border-left-color: #10b981;
+      }
+      .faq {
+        background: rgba(59,130,246,0.13);
+        border-left-color: #3b82f6;
+      }
+    }
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+        gap: 0;
+      }
+      .sidebar {
+        position: static;
+        max-width: 100%;
+        margin-bottom: 2rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 0.5rem;
+      }
+      .sidebar {
+        padding: 1rem 0.5rem;
+      }
+      .header h1 {
+        font-size: 1.3rem;
+      }
+      h2 {
+        font-size: 1.1rem;
+      }
+      h3 {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="glassnav">
+    <div class="glassnav-inner">
+      <a href="index.html" class="glassnav-logo">
+        <img src="MapletLogoSmallwhite.png" alt="Maplet Logo" style="height:32px;width:auto;vertical-align:middle;margin-right:10px;" />
+        <span>Maplet</span>
+      </a>
+      <input type="checkbox" id="glassnav-toggle" class="glassnav-toggle" />
+      <label for="glassnav-toggle" class="glassnav-toggle-label"><span></span></label>
+      <ul class="glassnav-links">
+        <li><a href="privacy-policy.html">Privacy</a></li>
+        <li><a href="eula.html">Terms</a></li>
+        <li><a href="help.html">Help</a></li>
+        <li><a href="help.html#faq">FAQ</a></li>
+      </ul>
+    </div>
+  </nav>
+  <style>
+    .glassnav {
+      position: sticky;
+      top: 24px;
+      z-index: 100;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+      background: none;
+    }
+    .glassnav-inner {
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 2.5rem;
+      box-shadow: 0 8px 32px rgba(59,130,246,0.10), 0 1.5px 8px rgba(0,0,0,0.07);
+      padding: 0.3rem 2.2rem 0.3rem 1.2rem;
+      margin: 0.5rem 0;
+      pointer-events: auto;
+      min-width: 260px;
+      max-width: 98vw;
+    }
+    .glassnav-logo {
+      display: flex;
+      align-items: center;
+      font-family: "Didot", "Times New Roman", serif;
+      font-size: 1.3rem;
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-right: 1.5rem;
+      white-space: nowrap;
+    }
+    .glassnav-logo span {
+      font-size: 1.18rem;
+      font-weight: 600;
+      color: #0ea5e9;
+      letter-spacing: 0.5px;
+    }
+    .glassnav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+    .glassnav-links li a {
+      color: #1f2937;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.08rem;
+      padding: 0.4rem 0.7rem;
+      border-radius: 1.2rem;
+      position: relative;
+      transition: background 0.18s, color 0.18s;
+      overflow: hidden;
+    }
+    .glassnav-links li a:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      bottom: 7px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #0ea5e9, #3b82f6);
+      border-radius: 2px;
+      transition: width 0.25s cubic-bezier(.4,0,.2,1), left 0.25s cubic-bezier(.4,0,.2,1);
+    }
+    .glassnav-links li a:hover:after,
+    .glassnav-links li a:focus:after {
+      width: 80%;
+      left: 10%;
+    }
+    .glassnav-links li a:hover,
+    .glassnav-links li a:focus {
+      background: rgba(59,130,246,0.08);
+      color: #0ea5e9;
+    }
+    .glassnav-toggle {
+      display: none;
+    }
+    .glassnav-toggle-label {
+      display: none;
+      cursor: pointer;
+      width: 38px;
+      height: 38px;
+      align-items: center;
+      justify-content: center;
+      margin-left: 0.5rem;
+    }
+    .glassnav-toggle-label span,
+    .glassnav-toggle-label span:before,
+    .glassnav-toggle-label span:after {
+      display: block;
+      background: #3b82f6;
+      height: 3px;
+      width: 26px;
+      border-radius: 2px;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .glassnav-toggle-label span:before,
+    .glassnav-toggle-label span:after {
+      content: '';
+      position: absolute;
+    }
+    .glassnav-toggle-label span:before {
+      top: -8px;
+    }
+    .glassnav-toggle-label span:after {
+      top: 8px;
+    }
+    @media (max-width: 800px) {
+      .glassnav-inner {
+        padding: 0.3rem 1rem 0.3rem 0.7rem;
+      }
+      .glassnav-links {
+        gap: 0.7rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .glassnav-inner {
+        padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+        min-width: 0;
+      }
+      .glassnav-logo {
+        font-size: 1.05rem;
+        margin-right: 0.7rem;
+      }
+      .glassnav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(255,255,255,0.97);
+        flex-direction: column;
+        gap: 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        display: none;
+        border-radius: 1.5rem;
+        margin: 0 0.5rem;
+        padding: 0.5rem 0;
+      }
+      .glassnav-links li {
+        width: 100%;
+        text-align: left;
+      }
+      .glassnav-links li a {
+        display: block;
+        padding: 1rem 1.5rem;
+        border-radius: 1.2rem;
+      }
+      .glassnav-toggle-label {
+        display: flex;
+      }
+      .glassnav-toggle:checked + .glassnav-toggle-label + .glassnav-links {
+        display: flex;
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      .glassnav-inner {
+        background: rgba(30,41,59,0.85);
+        box-shadow: 0 8px 32px rgba(59,130,246,0.13), 0 1.5px 8px rgba(0,0,0,0.13);
+      }
+      .glassnav-logo span {
+        color: #60a5fa;
+      }
+      .glassnav-links li a {
+        color: #e5e7eb;
+      }
+      .glassnav-links li a:hover,
+      .glassnav-links li a:focus {
+        background: rgba(59,130,246,0.13);
+        color: #38bdf8;
+      }
+      .glassnav-links {
+        background: rgba(30,41,59,0.97);
+      }
+      .glassnav-toggle-label span,
+      .glassnav-toggle-label span:before,
+      .glassnav-toggle-label span:after {
+        background: #60a5fa;
+      }
+    }
+  </style>
+  <div class="container">
+    <nav class="sidebar">
+      <h2>Contents</h2>
+      <ul>
+        <li><a href="#welcome">Welcome</a></li>
+        <li><a href="#home-screen-map">Home Screen (Map)</a></li>
+        <li><a href="#saving-a-location">Saving a Location</a></li>
+        <li><a href="#viewing-saved-locations">Viewing Saved Locations</a></li>
+        <li><a href="#editing-a-saved-location">Editing a Saved Location</a></li>
+        <li><a href="#viewing-distance-to-locations">Viewing Distance</a></li>
+        <li><a href="#sharing-folders-and-locations">Sharing</a></li>
+        <li><a href="#managing-folders">Managing Folders</a></li>
+        <li><a href="#editing-categories">Editing Categories</a></li>
+        <li><a href="#journey-planner">Journey Planner & Checklists</a></li>
+        <li><a href="#multi-route-planner">Multi-Route Planner</a></li>
+        <li><a href="#importing-locations">Importing Locations</a></li>
+        <li><a href="#exporting-locations">Exporting Locations</a></li>
+        <li><a href="#pro-subscription">Pro Subscription</a></li>
+        <li><a href="#cloud-sync">Cloud Sync</a></li>
+        <li><a href="#tips-tricks">Tips & Tricks</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <main class="main-content">
+      <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i>Back to Maplet</a>
+      <div class="header">
+        <img src="MapletLogoSmallwhite.png" alt="Maplet Logo" style="height:48px;width:auto;box-shadow:0 2px 8px rgba(59,130,246,0.10);border-radius:12px;margin-bottom:0.7rem;" />
+        <h1 id="welcome">Maplet Help & User Guide</h1>
+        <p>Your complete guide to saving, planning, and sharing locations with Maplet.</p>
+      </div>
+      <div style="max-width:700px;margin:2rem auto 2.5rem auto;padding:1.2rem 1.5rem;background:rgba(59,130,246,0.07);border-left:4px solid #3b82f6;border-radius:0 12px 12px 0;">
+        <strong>Maplet</strong> is your ultimate companion for saving, organizing, and exploring places that matter to you. Whether you’re a traveler, adventurer, or someone who loves to keep track of favorite spots, Maplet empowers you to:
+        <ul style="margin-top:0.7em;margin-bottom:0.7em;">
+          <li>Save unlimited locations with notes, photos, and voice memos</li>
+          <li>Organize places into folders and categories for easy access</li>
+          <li>Instantly see distances to your saved places and mark them as visited</li>
+          <li>Open or share locations in any major map app (Apple Maps, Google Maps, Waze, HERE, and more)</li>
+          <li>Plan journeys, optimize routes, and collaborate with friends (coming soon)</li>
+          <li>Sync your data privately and securely across all your Apple devices with iCloud</li>
+          <li><strong>Import locations from CSV, GPX, or KML files, and export your data to PDF or CSV for backup, sharing, or use in other apps.</strong></li>
+        </ul>
+        Maplet is designed to be simple, powerful, and privacy-friendly—giving you full control over your location data.
+      </div>
+      <!-- BEGIN USER GUIDE CONTENT -->
+      <!-- The following content is adapted from UserGuide.md, with HTML structure and anchor links for navigation. -->
+      <h2 id="home-screen-map">Home Screen (Map)</h2>
+      <p>The Home screen is your main map view, where you can:</p>
+      <ul>
+        <li>See your current location (blue dot)</li>
+        <li>Pan and zoom the map to explore</li>
+        <li>Search for places</li>
+        <li>Drop <strong>temporary</strong> or <strong>green (persistent)</strong> flags</li>
+        <li>Save new locations</li>
+        <li><strong>Share locations</strong></li>
+        <li><strong>Import from link</strong></li>
+        <li><strong>Hide/show saved pins</strong></li>
+        <li><strong>Hide/show flags</strong></li>
+        <li><strong>Clear temporary flags</strong></li>
+        <li><strong>Lock the save/share button to current location</strong> (for use in cars or on the move)</li>
+      </ul>
+      <h3>Key Features:</h3>
+      <ul>
+        <li><strong>Center on User</strong>: Tap the location button to center the map on your current position.</li>
+        <li><strong>Search</strong>: Use the search bar to find addresses or places. Results appear in a dropdown.</li>
+        <li><strong>Drop Flags</strong>: Tap and hold the flag button to choose between dropping a <strong>temporary flag</strong> or a <strong>green flag</strong> (persistent). Temporary flags are cleared when the app is restarted or by pressing the clear flag button. Green flags are persistent, remain after restart, and can be used to later save the location. Green flags can be cleared through Settings (Clear Flags) or by clicking on an individual green flag to delete or save it.</li>
+        <li><strong>Save Button</strong>: Tap the floating save button to open the Save Location screen for the current map center.</li>
+        <li><strong>Map Style</strong>: Switch between standard and satellite map styles using the map style toggle.</li>
+      </ul>
+      <h2 id="saving-a-location">Saving a Location</h2>
+      <ol>
+        <li><strong>Open the Save Sheet</strong>
+          <ul>
+            <li>Tap the floating <strong>Save/Share</strong> button on the Home screen.</li>
+            <li>Tap the <strong>Save</strong> button to open the Save Location sheet.</li>
+            <li>The Save Location sheet will appear with details for the current map center.</li>
+          </ul>
+        </li>
+        <li><strong>Fill in Details</strong>
+          <ul>
+            <li><strong>Title</strong>: Give your location a memorable name (required).</li>
+            <li><strong>Category</strong>: Choose a category (e.g., Food, View, Shopping, Other) or create your own.</li>
+            <li><strong>Folder</strong>: Organize locations into folders (e.g., Travel, Favorites).</li>
+            <li><strong>Notes</strong>: Add any extra details about the place.</li>
+            <li><strong>Rating</strong>: Optionally rate the location (1-5 stars).</li>
+            <li><strong>Photo</strong>: Attach a photo from your camera or library.</li>
+            <li><strong>Voice Note</strong>: Record a quick audio note about the location.</li>
+          </ul>
+        </li>
+        <li><strong>Save</strong>
+          <ul>
+            <li>Tap <strong>Save Location</strong> at the bottom. Your place is now saved!</li>
+          </ul>
+        </li>
+      </ol>
+      <div class="tip"><strong>Tip:</strong> You can create new categories and folders directly from the Save sheet.</div>
+      <h2 id="viewing-saved-locations">Viewing Saved Locations</h2>
+      <ul>
+        <li><strong>List/Grid/Folders</strong>: Switch between list, grid, and folder views for your locations.</li>
+        <li><strong>Sort & Filter</strong>: Sort by distance, date, category, or visited status.</li>
+        <li><strong>Search</strong>: Quickly find a saved place by name or notes.</li>
+        <li><strong>Bulk Actions</strong>: Select multiple locations for batch actions (delete, move, etc.).</li>
+        <li><strong>Visited Flags</strong>: Mark locations as visited with a green checkered flag.</li>
+        <li><strong>Show Distance</strong>: Show current distance to locations in the list view.</li>
+      </ul>
+      <h3>Location Details:</h3>
+      <ul>
+        <li>Tap any saved location to view its details, including:</li>
+        <ul>
+          <li>Title, address, notes</li>
+          <li>Attached photos and voice notes</li>
+          <li>Category and folder</li>
+          <li>Date added and last modified</li>
+          <li>Distance from your current location</li>
+        </ul>
+      </ul>
+      <h2 id="editing-a-saved-location">Editing a Saved Location</h2>
+      <ol>
+        <li><strong>Open Edit Sheet</strong>
+          <ul>
+            <li>From the Saved tab, tap a location, then tap the <strong>Edit</strong> button (usually a pencil icon).</li>
+          </ul>
+        </li>
+        <li><strong>Edit Details</strong>
+          <ul>
+            <li>Change the title, notes, category, folder, or rating.</li>
+            <li>Add or update a photo or voice note.</li>
+            <li>Delete an existing voice note if needed.</li>
+          </ul>
+        </li>
+        <li><strong>Save Changes</strong>
+          <ul>
+            <li>Tap <strong>Save Changes</strong> at the bottom to update the location.</li>
+          </ul>
+        </li>
+      </ol>
+      <h2 id="viewing-distance-to-locations">Viewing Distance to Locations</h2>
+      <ul>
+        <li>In the Saved tab, each location displays the distance from your current position.</li>
+        <li>The distance updates on pressing refresh distance button.</li>
+        <li>You can sort your saved locations by distance to quickly find the nearest places.</li>
+        <li>When viewing a location's details, the distance is shown at the top or in the info section.</li>
+      </ul>
+      <h2 id="sharing-folders-and-locations">Sharing Folders and Locations</h2>
+      <ul>
+        <li><strong>Share a Folder:</strong>
+          <ul>
+            <li>Long-press on a folder and select <strong>Share</strong>.</li>
+            <li>Maplet will generate a special link for the folder.</li>
+            <li><strong>Privacy:</strong> The link is base64-encoded, generated completely offline, and contains only the folder's data. No information is sent to any server—sharing is fully private and secure.</li>
+            <li><strong>Limit:</strong> There is a 15 location limit when sharing via base64 offline link, as a tradeoff for privacy and offline capability.</li>
+            <li><strong>Shared Data:</strong> Only the title, address, coordinates, notes, and star rating are included. <strong>Photos and voice notes are not shared.</strong></li>
+            <li><strong>Coming soon:</strong> Ability to share folders using other methods with more data types.</li>
+            <li><strong>How to Use:</strong>
+              <ul>
+                <li>The recipient must have Maplet installed on their device.</li>
+                <li>To import the folder, copy the link and paste it into Safari (or another browser) and open it. This will launch Maplet and prompt to import the folder.</li>
+              </ul>
+            </li>
+            <li>You can also share the link via email, AirDrop, or any messaging app.</li>
+          </ul>
+        </li>
+        <li><strong>Share a Location or Open in Any Map App:</strong>
+          <ul>
+            <li>Tap the share location button on a saved location card to generate a link or share in various map formats.</li>
+            <li>You can open any location directly in your preferred map app: <strong>Apple Maps, Google Maps, Waze, HERE, Citymapper, Gaode, Yandex, 2GIS, or Maps.me</strong>.</li>
+            <li>When sharing, you can choose to share the location in all supported map formats at once, making it easy for the recipient to open the location in their app of choice.</li>
+          </ul>
+        </li>
+      </ul>
+      <h2 id="managing-folders">Managing Folders (Rename, Edit, Delete)</h2>
+      <ul>
+        <li>In Folder view (Saved tab), <strong>long-press</strong> on any folder to open the options menu.</li>
+        <li>Available actions:
+          <ul>
+            <li><strong>Rename</strong>: Change the folder's name.</li>
+            <li><strong>Edit</strong>: Update the folder's icon or color.</li>
+            <li><strong>Delete</strong>: Remove the folder (you may be prompted to move or delete its contents).</li>
+          </ul>
+        </li>
+        <li>Use these options to keep your folders organized and up to date.</li>
+      </ul>
+      <h2 id="editing-categories">Editing Categories in Settings</h2>
+      <ul>
+        <li>Go to the <strong>Settings</strong> tab and select <strong>Manage Categories</strong>.</li>
+        <li>Here you can:
+          <ul>
+            <li>View all your custom categories.</li>
+            <li>Tap the <strong>Edit</strong> button (pencil icon) next to a category to change its name, icon, or color.</li>
+            <li>Tap the <strong>Delete</strong> button (trash icon) to remove a category (if not in use).</li>
+          </ul>
+        </li>
+        <li>Built-in categories cannot be edited or deleted.</li>
+      </ul>
+      <h2 id="journey-planner"><img src="ChecklistJourneyPlanIMG.png" alt="Journey Planner" style="height:36px;width:auto;vertical-align:middle;margin-right:10px;box-shadow:0 2px 8px rgba(59,130,246,0.10);border-radius:8px;" />Journey Planner & Checklists (Pro)</h2>
+      <p>Maplet’s <strong>Journey Planner</strong> lets you organize trips, create checklists of places to visit, and track your progress. Here’s how to use it:</p>
+      <h3>Accessing the Journey Planner</h3>
+      <ul>
+        <li>Tap the <strong>Journey Planner</strong> tab (or find it in the main menu).</li>
+        <li>You’ll see a list of all your journey plans.</li>
+      </ul>
+      <h3>Creating a Journey Plan</h3>
+      <ol>
+        <li>Tap the <strong>+</strong> button in the top right.</li>
+        <li>Enter a title and optional notes for your journey.</li>
+        <li>Add locations (stops) from your saved places.</li>
+        <li>Organize stops into the order you want to visit them.</li>
+        <li>Save your journey plan.</li>
+      </ol>
+      <h3>Viewing and Managing Journeys</h3>
+      <ul>
+        <li>All your journeys are listed with progress, number of stops, and completion status.</li>
+        <li>Use the search bar to find journeys by name or notes.</li>
+        <li>Filter to show/hide completed journeys.</li>
+        <li>Sort journeys by newest, oldest, A–Z, progress, or completion status.</li>
+        <li>Tap a journey to open its checklist view.</li>
+      </ul>
+      <h3>Journey Checklist View</h3>
+      <ul>
+        <li>See all stops in your journey as a checklist.</li>
+        <li>Mark stops as completed as you visit them.</li>
+        <li>View distance to each stop from your current location.</li>
+        <li>Tap a stop to mark as visited or open more options.</li>
+        <li>Long-press a stop for actions like editing notes, adding media, or opening in maps.</li>
+        <li>Add quick notes, photos, or voice notes to each stop.</li>
+        <li>Reorder stops manually (drag-and-drop) or use the <strong>Optimize</strong> button for the best route.</li>
+        <li>Enable <strong>Live Tracking</strong> to highlight the nearest stop as you move.</li>
+        <li>Track your overall journey progress with a progress bar.</li>
+      </ul>
+      <h3>Adding and Editing Journey Media</h3>
+      <ul>
+        <li>Add journey-level notes, photos, and voice notes from the checklist view.</li>
+        <li>Tap <strong>Edit</strong> in the Journey Media section to add or update media.</li>
+        <li>Attach photos and voice notes to individual stops as well.</li>
+      </ul>
+      <h3>Exporting and Printing Journeys</h3>
+      <ul>
+        <li>Tap the <strong>...</strong> menu in the checklist view for options.</li>
+        <li>Select <strong>Print Summary</strong> to generate a PDF of your journey, including all stops, notes, and media.</li>
+        <li>Share or print the PDF directly from the app.</li>
+      </ul>
+      <h3>Completing or Deleting a Journey</h3>
+      <ul>
+        <li>Mark a journey as complete from the <strong>...</strong> menu.</li>
+        <li>Delete a journey if you no longer need it (this cannot be undone).</li>
+      </ul>
+      <h2 id="multi-route-planner"><img src="MultiStopWay.png" alt="Multi-Route Planner" style="height:36px;width:auto;vertical-align:middle;margin-right:10px;box-shadow:0 2px 8px rgba(59,130,246,0.10);border-radius:8px;" />Multi-Route Planner (Pro)</h2>
+      <p>The <strong>Multi-Route Planner</strong> is a powerful Pro feature that lets you plan and preview routes with multiple stops, optimize the order, and open or share the route in your favorite navigation apps.</p>
+      <h3>Getting Started</h3>
+      <ul>
+        <li>Open the <strong>Multi-Route Planner</strong> from the Pro tab or main menu.</li>
+        <li>You’ll see a list/grid/folder view of all your saved locations.</li>
+      </ul>
+      <h3>Selecting Stops</h3>
+      <ol>
+        <li>Tap locations to select them as stops for your route. Selected stops are highlighted and counted at the top.</li>
+        <li>Use the search bar or folder view to quickly find and select locations.</li>
+        <li>You can select as many stops as you like (minimum 2 required).</li>
+      </ol>
+      <h3>Using Current Location</h3>
+      <ul>
+        <li>Choose to use your current location as the <strong>Start Point</strong>, <strong>End Point</strong>, or <strong>Off</strong> (not included) using the toggle at the top.</li>
+        <li>This is useful for planning routes from where you are or to your current position.</li>
+      </ul>
+      <h3>Viewing and Managing Stops</h3>
+      <ul>
+        <li>Switch between <strong>List</strong>, <strong>Grid</strong>, and <strong>Folder</strong> views to organize and select stops.</li>
+        <li>Use the search bar to filter locations by name, notes, or folder.</li>
+        <li>Long-press a location to view its details.</li>
+        <li>Use the <strong>Clear All</strong> button to deselect all stops.</li>
+      </ul>
+      <h3>Distance and Sorting</h3>
+      <ul>
+        <li>Tap the <strong>Show Distance</strong> button to display the distance from your current location to each stop.</li>
+        <li>Sort your locations by newest, oldest, A–Z, or other criteria using the sort menu.</li>
+      </ul>
+      <h3>Previewing the Route</h3>
+      <ol>
+        <li>Once you’ve selected at least 2 stops, tap <strong>Create Route</strong>.</li>
+        <li>The Multi-Route Map View will open, showing your stops on the map and the calculated route.</li>
+        <li>Use the <strong>Route Options</strong> section to:
+          <ul>
+            <li>Choose <strong>Driving</strong> or <strong>Walking</strong> mode</li>
+            <li>Enable <strong>Optimize Route & Stops</strong> to find the most efficient order</li>
+            <li>View and reorder stops using the <strong>Stop List</strong> button</li>
+            <li>Enable/disable individual stops</li>
+          </ul>
+        </li>
+        <li>The map displays all stops, the route polyline, and your current location.</li>
+        <li>Use the <strong>Full Screen</strong> button for a larger map view.</li>
+      </ol>
+      <h3>Route Summary and Actions</h3>
+      <ul>
+        <li>See the total distance and estimated time for your route.</li>
+        <li>Switch between <strong>Open In</strong> and <strong>Share</strong> modes:
+          <ul>
+            <li><strong>Open In</strong>: Instantly open the route in Apple Maps, Google Maps, or Here WeGo</li>
+            <li><strong>Share</strong>: Generate a shareable link or message for your route in these apps</li>
+          </ul>
+        </li>
+        <li>Apple Maps is recommended for multi-stop routes, but you can use any supported app.</li>
+      </ul>
+      <h3>Advanced Features</h3>
+      <ul>
+        <li><strong>Stop List</strong>: Tap the list button to view, reorder, enable/disable, or optimize stops.</li>
+        <li><strong>Drag-and-drop</strong>: Reorder stops manually (when optimization is off).</li>
+        <li><strong>Optimization</strong>: Use the brain icon or toggle to automatically find the most efficient stop order.</li>
+        <li><strong>Transport Mode</strong>: Switch between driving and walking for different route calculations.</li>
+        <li><strong>Route Preview</strong>: See each stop’s number, title, and coordinates on the map.</li>
+        <li><strong>Error Handling</strong>: If a route can’t be calculated, you’ll see an error message with details.</li>
+      </ul>
+      <div class="tip"><strong>Tips:</strong> You can include your current location as the start or end for more accurate directions. Use the stop list to quickly enable/disable stops without losing your selections. Share your route with friends or open it in your favorite navigation app with one tap. For best results, ensure all selected locations have valid coordinates.</div>
+      <h2 id="importing-locations"><img src="BtchImportIMG.png" alt="Batch Import" style="height:36px;width:auto;vertical-align:middle;margin-right:10px;box-shadow:0 2px 8px rgba(59,130,246,0.10);border-radius:8px;" />Importing Locations (Batch Import)</h2>
+      <p>Maplet makes it easy to import multiple locations at once from CSV, GPX, or KML files. This is perfect for migrating data from other apps, sharing lists, or quickly adding many places.</p>
+      <h3>Getting Started</h3>
+      <ul>
+        <li>Open the <strong>Batch Import</strong> tool from the Pro tab or main menu.</li>
+        <li>You’ll see options to select the file format (CSV, GPX, KML).</li>
+      </ul>
+      <h3>Step 1: Choose File Format</h3>
+      <ul>
+        <li><strong>CSV</strong>: For spreadsheets or exported lists (comma-separated values)</li>
+        <li><strong>GPX</strong>: For GPS tracks, waypoints, or routes (from GPS devices or mapping apps)</li>
+        <li><strong>KML</strong>: For Google Earth or other mapping tools (Keyhole Markup Language)</li>
+      </ul>
+      <h3>Step 2: Import Settings</h3>
+      <ul>
+        <li><strong>Target Folder</strong>: Choose or create a folder for imported locations.</li>
+        <li><strong>Default Category</strong>: Assign a category for locations that don’t specify one.</li>
+      </ul>
+      <h3>Step 3: Select and Import File</h3>
+      <ol>
+        <li>Tap <strong>Choose File</strong> and select your CSV, GPX, or KML file from Files or iCloud.</li>
+        <li>The app will parse the file and show a preview of the locations to be imported.</li>
+        <li>Review the preview, including folder/category assignment and sample data.</li>
+        <li>For large imports, you may be prompted to select a non-default folder.</li>
+      </ol>
+      <h3>Step 4: Preview and Confirm</h3>
+      <ul>
+        <li>See a summary of the locations to be imported.</li>
+        <li>For CSV, see which folders and categories will be used.</li>
+        <li>For GPX/KML, see a list of points, types, and coordinates.</li>
+        <li>If any locations are missing titles, you’ll be prompted to provide a base name.</li>
+      </ul>
+      <h3>Step 5: Handle Duplicates</h3>
+      <ul>
+        <li>The app automatically checks for duplicates (within 10 meters).</li>
+        <li>For each duplicate, choose to <strong>Skip</strong> or <strong>Merge & Update</strong> the existing location.</li>
+        <li>You can apply your choice to all duplicates for faster importing.</li>
+      </ul>
+      <h3>Step 6: Import</h3>
+      <ul>
+        <li>Tap <strong>Import</strong> to add all locations to your collection.</li>
+        <li>You’ll see a summary of new, merged, and skipped locations.</li>
+      </ul>
+      <h3>Format-Specific Tips</h3>
+      <ul>
+        <li><strong>CSV Import</strong>: Required columns: <code>title</code> (or <code>name</code>), <code>latitude</code>/<code>lat</code>, <code>longitude</code>/<code>lon</code>/<code>lng</code>. Optional columns: <code>address</code>, <code>notes</code>, <code>category</code>, <code>folder</code>, <code>landmark</code>, <code>city</code>, <code>state</code>, <code>country</code>, <code>timezone</code>. Supports both separate lat/lon columns and combined <code>coordinates</code> column.</li>
+        <li><strong>GPX Import</strong>: Supports waypoints, track points, and route points. Points without names will prompt for a base name (e.g., "Trail Spot 1"). Descriptions and comments are imported as notes.</li>
+        <li><strong>KML Import</strong>: Supports placemarks and points with valid coordinates. Points without names will prompt for a base name (e.g., "KML Point 1"). Descriptions and addresses are imported as notes.</li>
+      </ul>
+      <h3>Troubleshooting & Best Practices</h3>
+      <ul>
+        <li>For best results, ensure your file is UTF-8 encoded and contains valid coordinates.</li>
+        <li>If you see errors, check the format guide and sample files.</li>
+        <li>For large imports, organize locations into folders for easier management.</li>
+        <li>Use the preview to double-check data before importing.</li>
+        <li>If you cancel or encounter errors, you can retry the import at any time.</li>
+      </ul>
+      <h2 id="exporting-locations"><img src="ExportBatchIMG.png" alt="Export Batch" style="height:36px;width:auto;vertical-align:middle;margin-right:10px;box-shadow:0 2px 8px rgba(59,130,246,0.10);border-radius:8px;" />Exporting Locations (Pro Feature)</h2>
+      <ol>
+        <li><strong>Accessing the Export Feature</strong>
+          <ul>
+            <li>Go to the <strong>Pro</strong> tab and select <strong>Export to PDF / CSV</strong>.</li>
+            <li>You can also access Export from other Pro feature menus.</li>
+          </ul>
+        </li>
+        <li><strong>Selecting Locations to Export</strong>
+          <ul>
+            <li>The export screen shows all your saved locations, organized by folders and categories.</li>
+            <li><strong>Select</strong> the locations you want to export by tapping them. You can select multiple locations across folders.</li>
+            <li>Use the <strong>search bar</strong> to quickly find locations.</li>
+            <li>You can also sort and filter locations as needed.</li>
+          </ul>
+        </li>
+        <li><strong>Configuring Export Options</strong>
+          <ul>
+            <li>Tap <strong>Configure</strong> to open the Export Options sheet, where you can:</li>
+            <ul>
+              <li><strong>Choose Export Format:</strong> PDF (for printing/sharing) or CSV (for spreadsheets or importing elsewhere).</li>
+              <li><strong>Include Map Links:</strong> Toggle to include direct links to each location in Apple Maps, Google Maps, or HERE Maps.</li>
+              <li><strong>Select Map Service:</strong> Choose which map app's links to include (Apple, Google, HERE).</li>
+              <li><strong>Choose Fields to Include:</strong> Select which details to export: title, photo, address, coordinates, notes, category, folder, date added, visited status, map link, and landmark name. Tap <strong>Reorder</strong> to change the order of fields in the export.</li>
+              <li><strong>Photo Options (PDF only):</strong> Toggle to include or exclude photos in the PDF export.</li>
+              <li><strong>Summary:</strong> See a summary of your export settings before proceeding.</li>
+            </ul>
+          </ul>
+        </li>
+        <li><strong>Previewing Your Export</strong>
+          <ul>
+            <li>Tap <strong>Preview</strong> to see how your export will look.</li>
+            <li>Switch between <strong>Formatted</strong> and <strong>Raw Data</strong> preview modes.</li>
+            <li>Review the first few locations and fields to ensure everything looks right.</li>
+          </ul>
+        </li>
+        <li><strong>Exporting and Sharing</strong>
+          <ul>
+            <li>Tap <strong>Export</strong> to generate your file.</li>
+            <li>Progress is shown as the file is created.</li>
+            <li>Once complete, the share sheet will open, allowing you to save or share the file.</li>
+          </ul>
+        </li>
+        <li><strong>Tips & Best Practices</strong>
+          <ul>
+            <li>Only include the fields you need for a cleaner export.</li>
+            <li>Including map links makes it easy for others to open locations in their preferred map app.</li>
+            <li>Including photos in PDF exports is great for visual records, but may increase file size.</li>
+            <li>CSV Exports: Ideal for data analysis, backup, or importing into other mapping tools.</li>
+            <li>You can select all locations in a folder for batch export.</li>
+          </ul>
+        </li>
+        <li><strong>Troubleshooting</strong>
+          <ul>
+            <li>If you encounter any issues, try closing and restarting the app first.</li>
+            <li>For persistent problems, check for app updates in the App Store.</li>
+            <li>If you need further help, use the <strong>Support</strong> option in Settings to contact the developer or access help resources.</li>
+          </ul>
+        </li>
+      </ol>
+      <h2 id="pro-subscription">Maplet Pro Subscription</h2>
+      <ul>
+        <li><strong>Pro users get:</strong>
+          <ul>
+            <li>Unlimited location saves (no 20-location limit)</li>
+            <li>Access to all premium features: Smart Journey Planner, Multi-Stop Route Mapping, Custom Export (PDF/CSV), Batch Import (CSV/GPX/KML), and more</li>
+          </ul>
+        </li>
+        <li><strong>Free users:</strong>
+          <ul>
+            <li>Can use all basic features outside of Pro, but are limited to saving up to 20 locations</li>
+            <li>Can organize, search, and share locations, but cannot access Pro-only features</li>
+          </ul>
+        </li>
+        <li><strong>Subscription details:</strong>
+          <ul>
+            <li>The one-year Pro subscription includes a 7-day free trial</li>
+            <li>Cancel before the trial ends to avoid being charged</li>
+            <li>Subscriptions auto-renew unless cancelled at least 24 hours before the end of the current period</li>
+            <li>Manage or cancel your subscription at any time via your Apple ID settings</li>
+            <li>By subscribing, you agree to the Terms of Service and Privacy Policy</li>
+          </ul>
+        </li>
+      </ul>
+      <h2 id="cloud-sync">Cloud Sync (iCloud)</h2>
+      <ul>
+        <li>Maplet uses <strong>iCloud</strong> to automatically sync your locations, folders, and categories across all your Apple devices.</li>
+        <li>No account setup needed: Just be signed into iCloud and have iCloud Drive enabled on your device</li>
+        <li>Private and secure: Your data is only accessible to you via your Apple ID—no one else can see or access your locations</li>
+        <li>Automatic sync: Changes you make (add, edit, delete) are synced seamlessly in the background</li>
+        <li>Troubleshooting:
+          <ul>
+            <li>If you notice data not syncing, check that you are signed into iCloud, have a stable internet connection, and iCloud Drive is enabled for Maplet</li>
+            <li>Try restarting the app or your device if sync issues persist</li>
+          </ul>
+        </li>
+        <li>No manual export/import needed: All your data stays up to date across your iPhone and iPad automatically</li>
+      </ul>
+      <h2 id="tips-tricks">Tips & Tricks</h2>
+      <ul>
+        <li><strong>Quick Save</strong>: Use the map center to quickly save your current view.</li>
+        <li><strong>Categories & Folders</strong>: Organize your places for easy access.</li>
+        <li><strong>Photos & Voice Notes</strong>: Add rich details to remember why a place matters.</li>
+        <li><strong>Visited Flags</strong>: Track places you've been to with a single tap.</li>
+        <li><strong>Search</strong>: Use the search bar in both Home and Saved tabs to find places fast.</li>
+        <li><strong>Long-Press Actions</strong>: Long-press folders for more options like sharing, renaming, and deleting.</li>
+        <li><strong>Edit Categories</strong>: Use Settings to keep your categories organized and visually distinct.</li>
+      </ul>
+      <h2 id="faq">Frequently Asked Questions (FAQ)</h2>
+      <div class="faq">
+        <p><strong>Q: What happens if I reach the free location limit?</strong><br> You won’t be able to save new locations until you delete some or upgrade to Pro for unlimited saves.</p>
+        <p><strong>Q: How do I restore my Pro subscription?</strong><br> Go to the Pro/Upgrade screen and tap “Restore Purchases.” Make sure you’re signed in with the same Apple ID you used to subscribe.</p>
+        <p><strong>Q: Is my data private?</strong><br> Yes! All your data is stored locally and synced via your private iCloud account. No data is sent to any external servers.</p>
+        <p><strong>Q: How do I transfer my data to a new device?</strong><br> Just sign in to iCloud on your new device and install Maplet. Your data will sync automatically.</p>
+        <p><strong>Q: What if I accidentally delete a location or folder?</strong><br> Deletions are permanent. There’s no undo, so please double-check before deleting. If you delete a folder and it still appears, restart the app.</p>
+        <p><strong>Q: Why do I need to restart the app after deleting a folder?</strong><br> Occasionally, deleted folders may still appear until the app is restarted. This is a known issue and will be improved in future updates.</p>
+        <p><strong>Q: How do I contact support?</strong><br> Go to Settings &gt; Support in the app to contact the developer or access help resources.</p>
+        <p><strong>Q: Can I use Maplet offline?</strong><br> Yes! You can view, organize, and manage your saved locations offline. Some features (like map previews or sync) require internet.</p>
+        <p><strong>Q: What map apps are supported for sharing/opening locations?</strong><br> Apple Maps, Google Maps, Waze, HERE, Citymapper, Gaode, Yandex, 2GIS, and Maps.me.</p>
+        <p><strong>Q: How do I cancel my subscription?</strong><br> Open your device’s Settings, tap your Apple ID, go to Subscriptions, and select Maplet to manage or cancel your subscription.</p>
+      </div>
+      <!-- END USER GUIDE CONTENT -->
+      <h2 id="contact-support">Feature Requests & Support</h2>
+      <div class="faq">
+        <p>For any additional feature requests, bug reports, or anything else, please contact <a href="mailto:gemshi@me.com">gemshi@me.com</a>.</p>
+      </div>
+      <div style="text-align:center;margin-top:2.5rem;">
+        <a href="index.html" style="color:#3b82f6;font-weight:500;text-decoration:none;"><i class="fas fa-arrow-left"></i> Back to Maplet Home</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html> 

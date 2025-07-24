@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Maplet – Save, Plan, and Share Locations Effortlessly." />
+  <title>Maplet – Save, Plan, and Share Locations</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f8fafc;
+      color: #1f2937;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+    header, section, footer {
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+    .parallax-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      background: url('map-background.jpg') center center / cover no-repeat fixed;
+      opacity: 0.3;
+    }
+    .svg-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero {
+      text-align: center;
+      padding: 8rem 2rem 6rem;
+      color: #0f172a;
+    }
+    .hero img {
+      width: 300px;
+      margin-top: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transform: translateY(0);
+      animation: floatImage 6s ease-in-out infinite;
+    }
+    @keyframes floatImage {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-family: "Didot", "Times New Roman", serif;
+      background: linear-gradient(90deg, #0ea5e9, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: auto;
+      color: #374151;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      color: #111827;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .feature {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transform: translateY(0);
+    }
+    .feature:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    .feature i {
+      font-size: 2.4rem;
+      color: #3b82f6;
+    }
+    .feature h3 {
+      margin-top: 1rem;
+      font-size: 1.3rem;
+    }
+    .feature p {
+      color: #4b5563;
+    }
+    .pricing-table {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .plan {
+      background: white;
+      border: 2px solid #d1d5db;
+      border-radius: 16px;
+      padding: 2rem;
+      width: 280px;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    .plan:hover {
+      transform: scale(1.05);
+    }
+    .plan h4 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .plan p {
+      font-size: 1.1rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #6b7280;
+      padding-bottom: 3rem;
+    }
+    .app-store-button {
+      margin-top: 1.5rem;
+    }
+    .app-store-button img {
+      width: 160px;
+    }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #0f172a;
+        color: #e5e7eb;
+      }
+      .feature {
+        background: rgba(30, 41, 59, 0.3);
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+      .feature:hover {
+        background: rgba(30, 41, 59, 0.4);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+      .plan {
+        background: #1e293b;
+        border-color: #334155;
+      }
+      .hero p {
+        color: #cbd5e1;
+      }
+      .section-title {
+        color: #ffffff;
+      }
+      .footer a {
+        color: #ffffff;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="glassnav">
+    <div class="glassnav-inner">
+      <a href="index.html" class="glassnav-logo">
+      
+      </a>
+      <input type="checkbox" id="glassnav-toggle" class="glassnav-toggle" />
+      <label for="glassnav-toggle" class="glassnav-toggle-label"><span></span></label>
+      <ul class="glassnav-links">
+        <li><a href="privacy-policy.html">Privacy</a></li>
+        <li><a href="eula.html">Terms</a></li>
+        <li><a href="help.html">Help</a></li>
+        <li><a href="help.html#faq">FAQ</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="parallax-bg"></div>
+  <svg class="svg-overlay" viewBox="0 0 1440 320" preserveAspectRatio="none">
+    <path fill="#3b82f6" fill-opacity="0.2" d="M0,160L60,165.3C120,171,240,181,360,186.7C480,192,600,192,720,186.7C840,181,960,171,1080,165.3C1200,160,1320,160,1380,160L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+  </svg>
+
+  <header class="hero">
+    <h1>Maplet</h1>
+    <p>Save, Plan, and Share Locations Effortlessly.</p>
+    <div class="app-store-button">
+      <img src="appstore-badge.png" alt="Download on the App Store" />
+    </div>
+    <img src="maplet-device-mockup.png" alt="Maplet app screenshot" />
+  </header>
+
+  <section>
+    <h2 class="section-title">Why Maplet?</h2>
+    <div class="features-grid">
+      <div class="feature"><i class="fas fa-infinity"></i><h3>Unlimited Locations</h3><p>Capture places with notes, photos, and voice memos. (Free: 20 locations)</p></div>
+      <div class="feature"><i class="fas fa-folder"></i><h3>Folders & Categories</h3><p>Organize locations by purpose and mood for easy retrieval.</p></div>
+      <div class="feature"><i class="fas fa-map-marker-alt"></i><h3>Visited Tracking</h3><p>Mark locations as visited and monitor your travel history.</p></div>
+      <div class="feature"><i class="fas fa-directions"></i><h3>Open in Any Map</h3><p>Navigate using Apple, Google, Waze, and more with one tap.</p></div>
+      <div class="feature"><i class="fas fa-exchange-alt"></i><h3>Map Format Sharing</h3><p>Generate shareable map links in your preferred format.</p></div>
+      <div class="feature"><i class="fas fa-users"></i><h3>Share & Collaborate</h3><p>Share single spots or entire folders with friends or colleagues.</p></div>
+      <div class="feature"><i class="fas fa-flag"></i><h3>Temporary Flags</h3><p>Quickly mark places that need your attention.</p></div>
+      <div class="feature"><i class="fas fa-flag-checkered"></i><h3>Persistent Flags</h3><p>Mark key places permanently for later use.</p></div>
+      <div class="feature"><i class="fas fa-cloud"></i><h3>Cloud Sync</h3><p>Sync everything with iCloud, effortlessly.</p></div>
+      <div class="feature"><i class="fas fa-list-check"></i><h3>Journey Checklists ✨PRO</h3><p>Create, track, and update your trip steps with rich context.</p></div>
+      <div class="feature"><i class="fas fa-route"></i><h3>Multi-Stop Planner ✨PRO</h3><p>Auto-optimize stops and open routes in map apps.</p></div>
+      <div class="feature"><i class="fas fa-file-export"></i><h3>Batch Import/Export ✨PRO</h3><p>CSV, PDF, GPX, and KML file support built in.</p></div>
+    </div>
+  </section>
+
+
+
+  <footer class="footer">
+    <p>&copy; 2025 Maplet. All rights reserved.</p>
+    <p>Contact: hello@maplet.app</p>
+    <p><a href="privacy-policy.html">Privacy</a> · <a href="eula.html">Terms</a> · <a href="help.html">Help</a></p>
+    <p style="margin-top:2.5rem;font-size:0.85rem;color:#9ca3af;line-height:1.5;">Copyright © 2025 Gemshi. All rights reserved. This website and its content may not be copied, reproduced, or distributed without permission.</p>
+  </footer>
+  <style>
+    .glassnav {
+      position: sticky;
+      top: 24px;
+      z-index: 100;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+      background: none;
+    }
+    .glassnav-inner {
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 2.5rem;
+      box-shadow: 0 8px 32px rgba(59,130,246,0.10), 0 1.5px 8px rgba(0,0,0,0.07);
+      padding: 0.3rem 2.2rem 0.3rem 1.2rem;
+      margin: 0.5rem 0;
+      pointer-events: auto;
+      min-width: 260px;
+      max-width: 98vw;
+    }
+    .glassnav-logo {
+      display: flex;
+      align-items: center;
+      font-family: "Didot", "Times New Roman", serif;
+      font-size: 1.3rem;
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-right: 1.5rem;
+      white-space: nowrap;
+    }
+    .glassnav-logo span {
+      font-size: 1.18rem;
+      font-weight: 600;
+      color: #0ea5e9;
+      letter-spacing: 0.5px;
+    }
+    .glassnav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+    .glassnav-links li a {
+      color: #1f2937;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.08rem;
+      padding: 0.4rem 0.7rem;
+      border-radius: 1.2rem;
+      position: relative;
+      transition: background 0.18s, color 0.18s;
+      overflow: hidden;
+    }
+    .glassnav-links li a:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      bottom: 7px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #0ea5e9, #3b82f6);
+      border-radius: 2px;
+      transition: width 0.25s cubic-bezier(.4,0,.2,1), left 0.25s cubic-bezier(.4,0,.2,1);
+    }
+    .glassnav-links li a:hover:after,
+    .glassnav-links li a:focus:after {
+      width: 80%;
+      left: 10%;
+    }
+    .glassnav-links li a:hover,
+    .glassnav-links li a:focus {
+      background: rgba(59,130,246,0.08);
+      color: #0ea5e9;
+    }
+    .glassnav-toggle {
+      display: none;
+    }
+    .glassnav-toggle-label {
+      display: none;
+      cursor: pointer;
+      width: 38px;
+      height: 38px;
+      align-items: center;
+      justify-content: center;
+      margin-left: 0.5rem;
+    }
+    .glassnav-toggle-label span,
+    .glassnav-toggle-label span:before,
+    .glassnav-toggle-label span:after {
+      display: block;
+      background: #3b82f6;
+      height: 3px;
+      width: 26px;
+      border-radius: 2px;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .glassnav-toggle-label span:before,
+    .glassnav-toggle-label span:after {
+      content: '';
+      position: absolute;
+    }
+    .glassnav-toggle-label span:before {
+      top: -8px;
+    }
+    .glassnav-toggle-label span:after {
+      top: 8px;
+    }
+    @media (max-width: 800px) {
+      .glassnav-inner {
+        padding: 0.3rem 1rem 0.3rem 0.7rem;
+      }
+      .glassnav-links {
+        gap: 0.7rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .glassnav-inner {
+        padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+        min-width: 0;
+      }
+      .glassnav-logo {
+        font-size: 1.05rem;
+        margin-right: 0.7rem;
+      }
+      .glassnav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(255,255,255,0.97);
+        flex-direction: column;
+        gap: 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        display: none;
+        border-radius: 1.5rem;
+        margin: 0 0.5rem;
+        padding: 0.5rem 0;
+      }
+      .glassnav-links li {
+        width: 100%;
+        text-align: left;
+      }
+      .glassnav-links li a {
+        display: block;
+        padding: 1rem 1.5rem;
+        border-radius: 1.2rem;
+      }
+      .glassnav-toggle-label {
+        display: flex;
+      }
+      .glassnav-toggle:checked + .glassnav-toggle-label + .glassnav-links {
+        display: flex;
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      .glassnav-inner {
+        background: rgba(30,41,59,0.85);
+        box-shadow: 0 8px 32px rgba(59,130,246,0.13), 0 1.5px 8px rgba(0,0,0,0.13);
+      }
+      .glassnav-logo span {
+        color: #60a5fa;
+      }
+      .glassnav-links li a {
+        color: #e5e7eb;
+      }
+      .glassnav-links li a:hover,
+      .glassnav-links li a:focus {
+        background: rgba(59,130,246,0.13);
+        color: #38bdf8;
+      }
+      .glassnav-links {
+        background: rgba(30,41,59,0.97);
+      }
+      .glassnav-toggle-label span,
+      .glassnav-toggle-label span:before,
+      .glassnav-toggle-label span:after {
+        background: #60a5fa;
+      }
+    }
+  </style>
+</body>
+</html>
