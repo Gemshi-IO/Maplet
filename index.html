@@ -233,7 +233,12 @@
   <footer class="footer">
     <p>&copy; 2025 Maplet. All rights reserved.</p>
     <p>Contact: hello@maplet.app</p>
-    <p><a href="privacy-policy.html">Privacy</a> · <a href="eula.html">Terms</a> · <a href="help.html">Help</a></p>
+    <p>
+      <a href="privacy-policy.html">Privacy</a> · 
+      <a href="eula.html">Terms</a> · 
+      <a href="help.html">Help</a> · 
+      <a href="help.html#faq" class="footer-faq-link">FAQ</a>
+    </p>
     <p style="margin-top:2.5rem;font-size:0.85rem;color:#9ca3af;line-height:1.5;">Copyright © 2025 Gemshi. All rights reserved. This website and its content may not be copied, reproduced, or distributed without permission.</p>
   </footer>
   <style>
@@ -363,13 +368,22 @@
       }
     }
     @media (max-width: 600px) {
-      .glassnav-inner {
-        padding: 0.3rem 0.5rem 0.3rem 0.5rem;
-        min-width: 0;
+      .glassnav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        z-index: 1000;
+        border-radius: 0 0 2.5rem 2.5rem;
       }
-      .glassnav-logo {
-        font-size: 1.05rem;
-        margin-right: 0.7rem;
+      .glassnav-inner {
+        width: 100vw;
+        left: 0;
+        right: 0;
+        border-radius: 0 0 2.5rem 2.5rem;
+        min-width: 0;
+        margin: 0;
       }
       .glassnav-links {
         position: absolute;
@@ -381,9 +395,10 @@
         gap: 0;
         box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         display: none;
-        border-radius: 1.5rem;
-        margin: 0 0.5rem;
+        border-radius: 0 0 1.5rem 1.5rem;
+        margin: 0;
         padding: 0.5rem 0;
+        pointer-events: auto;
       }
       .glassnav-links li {
         width: 100%;
