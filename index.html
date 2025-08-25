@@ -44,6 +44,57 @@
       pointer-events: none;
       z-index: 1;
     }
+    
+    /* POI Background Styles */
+    .poi-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0.5;
+      overflow: hidden;
+    }
+    
+    .poi {
+      position: absolute;
+      font-size: 1.5rem;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+      animation: poiFloat 4s ease-in-out infinite;
+    }
+    
+    .poi.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    
+    .poi:hover {
+      transform: scale(1.2);
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+    }
+    
+    @keyframes poiFloat {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-8px) scale(1.05); }
+    }
+    
+    /* POI Positioning */
+    .poi-1 { top: 15%; left: 20%; animation-delay: 0s; }
+    .poi-2 { top: 25%; left: 75%; animation-delay: 0.5s; }
+    .poi-3 { top: 45%; left: 15%; animation-delay: 1s; }
+    .poi-4 { top: 35%; left: 80%; animation-delay: 1.5s; }
+    .poi-5 { top: 65%; left: 25%; animation-delay: 2s; }
+    .poi-6 { top: 55%; left: 70%; animation-delay: 2.5s; }
+    .poi-7 { top: 75%; left: 10%; animation-delay: 3s; }
+    .poi-8 { top: 20%; left: 60%; animation-delay: 3.5s; }
+    .poi-9 { top: 80%; left: 85%; animation-delay: 4s; }
+    .poi-10 { top: 30%; left: 40%; animation-delay: 4.5s; }
+    .poi-11 { top: 70%; left: 55%; animation-delay: 5s; }
+    .poi-12 { top: 40%; left: 90%; animation-delay: 5.5s; }
     .hero {
       text-align: center;
       padding: 8rem 2rem 6rem;
@@ -225,6 +276,20 @@
     </div>
   </nav>
   <div class="parallax-bg"></div>
+  <div class="poi-background">
+    <div class="poi poi-1" data-poi="restaurant">🍕</div>
+    <div class="poi poi-2" data-poi="coffee">☕</div>
+    <div class="poi poi-3" data-poi="park">🌳</div>
+    <div class="poi poi-4" data-poi="museum">🏛️</div>
+    <div class="poi poi-5" data-poi="shopping">🛍️</div>
+    <div class="poi poi-6" data-poi="hotel">🏨</div>
+    <div class="poi poi-7" data-poi="gas">⛽</div>
+    <div class="poi poi-8" data-poi="hospital">🏥</div>
+    <div class="poi poi-9" data-poi="school">🎓</div>
+    <div class="poi poi-10" data-poi="bank">🏦</div>
+    <div class="poi poi-11" data-poi="gym">💪</div>
+    <div class="poi poi-12" data-poi="library">📚</div>
+  </div>
   <svg class="svg-overlay" viewBox="0 0 1440 320" preserveAspectRatio="none">
     <path fill="#3b82f6" fill-opacity="0.2" d="M0,160L60,165.3C120,171,240,181,360,186.7C480,192,600,192,720,186.7C840,181,960,171,1080,165.3C1200,160,1320,160,1380,160L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
   </svg>
@@ -275,6 +340,101 @@
     </p>
     <p style="margin-top:2.5rem;font-size:0.85rem;color:#9ca3af;line-height:1.5;">Copyright © 2025 Gemshi. All rights reserved. This website and its content may not be copied, reproduced, or distributed without permission.</p>
   </footer>
+  
+  <script>
+    // POI Animation Controller
+    class POIController {
+      constructor() {
+        this.pois = document.querySelectorAll('.poi');
+        this.visiblePOIs = new Set();
+        this.minVisible = 3;
+        this.maxVisible = 8;
+        this.showDuration = 4000; // 4 seconds
+        this.hideDuration = 3000; // 3 seconds
+        this.init();
+      }
+      
+      init() {
+        // Start the animation cycle
+        this.cyclePOIs();
+        
+        // Add some initial visible POIs
+        setTimeout(() => {
+          this.showRandomPOIs(4);
+        }, 1000);
+      }
+      
+      showRandomPOIs(count) {
+        const availablePOIs = Array.from(this.pois).filter(poi => !this.visiblePOIs.has(poi));
+        const toShow = Math.min(count, availablePOIs.length);
+        
+        for (let i = 0; i < toShow; i++) {
+          const randomIndex = Math.floor(Math.random() * availablePOIs.length);
+          const poi = availablePOIs.splice(randomIndex, 1)[0];
+          this.showPOI(poi);
+        }
+      }
+      
+      hideRandomPOIs(count) {
+        const visiblePOIArray = Array.from(this.visiblePOIs);
+        const toHide = Math.min(count, visiblePOIArray.length);
+        
+        for (let i = 0; i < toHide; i++) {
+          const randomIndex = Math.floor(Math.random() * visiblePOIArray.length);
+          const poi = visiblePOIArray.splice(randomIndex, 1)[0];
+          this.hidePOI(poi);
+        }
+      }
+      
+      showPOI(poi) {
+        poi.classList.add('visible');
+        this.visiblePOIs.add(poi);
+        
+        // Add a subtle entrance effect
+        poi.style.transform = 'scale(0.8) translateY(20px)';
+        setTimeout(() => {
+          poi.style.transform = 'scale(1) translateY(0)';
+        }, 50);
+      }
+      
+      hidePOI(poi) {
+        poi.classList.remove('visible');
+        this.visiblePOIs.delete(poi);
+        
+        // Add a subtle exit effect
+        poi.style.transform = 'scale(0.8) translateY(-20px)';
+      }
+      
+      cyclePOIs() {
+        setInterval(() => {
+          const currentVisible = this.visiblePOIs.size;
+          
+          if (currentVisible < this.minVisible) {
+            // Need to show more POIs
+            const toShow = this.minVisible - currentVisible + Math.floor(Math.random() * 2);
+            this.showRandomPOIs(toShow);
+          } else if (currentVisible > this.maxVisible) {
+            // Need to hide some POIs
+            const toHide = currentVisible - this.maxVisible + Math.floor(Math.random() * 2);
+            this.hideRandomPOIs(toHide);
+          } else {
+            // Randomly show or hide
+            if (Math.random() > 0.5) {
+              this.showRandomPOIs(1);
+            } else {
+              this.hideRandomPOIs(1);
+            }
+          }
+        }, 2000); // Check every 2 seconds
+      }
+    }
+    
+    // Initialize POI controller when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      new POIController();
+    });
+  </script>
+  
   <style>
     .glassnav {
       position: sticky;
