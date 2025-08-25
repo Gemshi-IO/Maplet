@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Maplet – Save, Plan, and Share Locations Effortlessly." />
   <title>Maplet – Save, Plan, and Share Locations</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     html, body {
@@ -151,6 +152,33 @@
     .app-store-button img {
       width: 100px;
     }
+    .ios-app-store-button {
+      margin-top: 2rem;
+    }
+    .ios-app-store-button a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, #3b82f6, #0ea5e9);
+      color: white;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .ios-app-store-button a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(59, 130, 246, 0.4);
+      background: linear-gradient(135deg, #2563eb, #0284c7);
+    }
+    .ios-app-store-button i {
+      font-size: 1.4rem;
+    }
     @media (prefers-color-scheme: dark) {
       body {
         background: #0f172a;
@@ -202,12 +230,18 @@
   </svg>
 
   <header class="hero">
-    <h1>Maplet</h1>
-    <p>Save, Plan, and Share Locations Effortlessly.</p>
     <div class="app-store-button">
       <img src="appstore-badge.png" alt="Download on the App Store" />
     </div>
-    <img src="maplet-device-mockup.jpg" alt="Maplet app screenshot" />
+    <h1>Maplet</h1>
+    <p>Save, Plan, and Share Locations Effortlessly.</p>
+    <img src="maplet-device-mockup.png" alt="Maplet app screenshot" />
+    <div class="ios-app-store-button">
+      <a href="https://apps.apple.com/app/maplet-map-location-saver/id6748853120" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-apple"></i>
+        <span>Get it on iOS App Store</span>
+      </a>
+    </div>
   </header>
 
   <section>
@@ -232,7 +266,7 @@
 
   <footer class="footer">
     <p>&copy; 2025 Maplet. All rights reserved.</p>
-    <p>Contact: hello@maplet.app</p>
+    <p>Contact: gemshi@me.com</p>
     <p>
       <a href="privacy-policy.html">Privacy</a> · 
       <a href="eula.html">Terms</a> · 
@@ -255,7 +289,7 @@
     .glassnav-inner {
       display: flex;
       align-items: center;
-      background: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.3);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-radius: 2.5rem;
@@ -418,7 +452,7 @@
     }
     @media (prefers-color-scheme: dark) {
       .glassnav-inner {
-        background: rgba(30,41,59,0.85);
+        background: rgba(30,41,59,0.3);
         box-shadow: 0 8px 32px rgba(59,130,246,0.13), 0 1.5px 8px rgba(0,0,0,0.13);
       }
       .glassnav-logo span {
