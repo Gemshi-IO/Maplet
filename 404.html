@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to Maplet.net…</title>
+  <meta name="robots" content="noindex, follow">
+  <script>
+    (function () {
+      // GitHub Pages project site is served at /Maplet/ on gemshi.com
+      var path = window.location.pathname.replace(/^\/Maplet/i, "") || "/";
+      var map = {
+        "/": "/",
+        "/index.html": "/",
+        "/privacy-policy.html": "/privacy",
+        "/privacy-policy": "/privacy",
+        "/eula.html": "/terms",
+        "/eula": "/terms",
+        "/help.html": "/support",
+        "/help": "/support",
+        "/userguide.md": "/support",
+        "/UserGuide.md": "/support"
+      };
+      var key = path.replace(/\/$/, "") || "/";
+      if (key !== "/" && map[key + "/"]) key = key; // keep exact
+      var destPath = map[path] || map[key] || map[key.toLowerCase()] || "/";
+      if (/[?&]data=/.test(window.location.search)) {
+        destPath = "/share";
+      }
+      var newUrl = "https://maplet.net" + destPath + window.location.search + window.location.hash;
+      window.location.replace(newUrl);
+    })();
+  </script>
+  <meta http-equiv="refresh" content="0; url=https://maplet.net/">
+</head>
+<body>
+  <p>Maplet has moved to <a href="https://maplet.net/">maplet.net</a>. Redirecting you now…</p>
+</body>
+</html>
